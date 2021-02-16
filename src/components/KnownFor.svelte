@@ -17,14 +17,11 @@
     .then(x => x.json())
     .then(x => x.cast)
     films= await movies.filter(function(movie) {
-      console.log('media type',movie.media_type)
       return movie.media_type === 'movie'
     })
     tv=movies.filter(function(movie) {
       return movie.media_type === 'tv'
     })
-    console.log('known for films ',films)
-    console.log('known for tv ',tv)
 	})
 
 </script>

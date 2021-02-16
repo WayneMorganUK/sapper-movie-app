@@ -1,24 +1,25 @@
 <script>
   import { current_page, media_type } from './store.js'
   import { goto } from '@sapper/app';
-
+ 
 
   function toggleMovie() {
-    console.log('media type', $media_type)
     if ($media_type !== 'movie'){
       console.log('media type', $media_type)
       $media_type='movie'
+      console.log('media type', $media_type)
       $current_page = 1
       goto('/')
     }
   }
 
-  function toggleTv() {
-    console.log('media type', $media_type)
+  async function toggleTv() {
     if ($media_type !== 'tv'){
       console.log('media type', $media_type)
-      $media_type='tv'
       $current_page = 1
+      console.log('media type', $media_type)
+      $media_type='tv'
+      
       goto('/')
     }
   }

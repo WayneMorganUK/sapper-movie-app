@@ -35,7 +35,7 @@
 {#if total_pages&&$current_page}
 	<Pagination
 		{total_pages}
-		on:change="{(ev) => getMovies(api_url + ev.detail)}">
+		on:change ="{(ev) => getMovies(api_url + ev.detail)}">
 	</Pagination>
 {/if}
 

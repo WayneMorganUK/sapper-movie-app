@@ -4,7 +4,7 @@
 	export let movies
 </script>
 
-<section transition:fade class='movie-container'>
+<section class='movie-container'>
 	{#if movies.length > 0 } 
 		{#each movies as movie, i}
 			<MovieCard key={i} {...movie}/>

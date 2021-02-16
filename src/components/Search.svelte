@@ -11,7 +11,7 @@
   }
 </script>
 
-<form 
+<form label='search form'
   on:submit|preventDefault = {handleOnSubmit}>
   <input 
     label='search'

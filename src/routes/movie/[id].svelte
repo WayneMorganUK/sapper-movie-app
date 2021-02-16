@@ -1,14 +1,14 @@
 <script>
+  $media_type= 'movie'
   import ProgressBar from '../../components/ProgressBar.svelte'
   import { getMovieDetails, } from '../../components/fetchData'
   import { getTrailerId } from '../../components/fetchTrailer'
   import Spinner from '../../components/Spinner.svelte'
   import Modal from "../../components/Modal.svelte"
   import Persons from '../../components/Persons.svelte'
-  
   import { media_type } from '../../components/store.js'
   import { stores } from '@sapper/app';
-  $media_type= 'movie'
+  
 	const { page } = stores(); 
 	const { params } = $page;
 

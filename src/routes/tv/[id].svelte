@@ -1,4 +1,5 @@
 <script>
+  $media_type= 'tv'
   import ProgressBar from '../../components/ProgressBar.svelte'
   import { getMovieDetails, } from '../../components/fetchData'
   import { getTrailerId } from '../../components/fetchTrailer'
@@ -7,15 +8,15 @@
   import Persons from '../../components/Persons.svelte'
   import { media_type } from '../../components/store.js'
   import { stores } from '@sapper/app';
-  $media_type= 'tv'
+  
 	const { page } = stores(); 
 	const { params } = $page;
 
-  let movie_id = params.id
+  let tv_id = params.id
 
   const ApiKey = process.env.SAPPER_APP_API_KEY
-  const MOVIE_DETAIL_API = `https://api.themoviedb.org/3/tv/${movie_id}?api_key=${ApiKey}&language=en-US`
-  const VIDEO_API = `https://api.themoviedb.org/3/tv/${movie_id}/videos?api_key=${ApiKey}&language=en-US`
+  const MOVIE_DETAIL_API = `https://api.themoviedb.org/3/tv/${tv_id}?api_key=${ApiKey}&language=en-US`
+  const VIDEO_API = `https://api.themoviedb.org/3/tv/${tv_id}/videos?api_key=${ApiKey}&language=en-US`
   const IMAGE_API = "https://image.tmdb.org/t/p/"
   
   let modal;
@@ -88,7 +89,7 @@
     </div>
   </div>
   <div>
-    <Persons {movie_id} />
+    <Persons {tv_id} />
   </div>
   <Modal bind:this={modal}>
     <iframe width='1080' height="600" title='preview'
@@ -146,26 +147,7 @@
     align-items: center;
     justify-content: flex-start;
   }
-  /* .duration {
-    padding-left: 20px;
-    position: relative;
-    top: 0;
-    left: 0;
-  }
-  .duration:before {
-    font-size: 1.1em;
-    line-height: 1;
-    content: '\2022';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 7px;
-    display: inline-flex;
-    align-content: center;
-    align-items: center;
-    z-index: -1;
-} */
+  
   a {
     text-decoration: none;
     text-decoration-line: none;
@@ -255,19 +237,6 @@
     margin: 0;
     width: 100%;
   }
-  
-  /* .movie-title:hover {
-    color:rgba(255,255,255,0.7);
-  } */
-  /* .release_date {
-    opacity: 0.8;
-    font-weight: 400;
-  }
-
-  .release_date:hover {
-    opacity: 1.2;
-  }
- */
 
   .genres {
     padding-left: 20px;

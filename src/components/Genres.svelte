@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte'
 	import { media_type } from '../components/store.js'
-	import { fade } from 'svelte/transition'
+	// import { fade } from 'svelte/transition'
 
   const ApiKey = process.env.SAPPER_APP_API_KEY
 	const GENRES_API = `https://api.themoviedb.org/3/genre/${$media_type}/list?api_key=${ApiKey}&language-en-GB`
@@ -21,7 +21,6 @@
 		{#each genres as genre}
 			<a 
 				on:click="{() => selected=genre.id}"
-				transition:fade
 				class:selected="{selected===genre.id}"
 				class='genre' 
 				href={`genre/${genre.id}`} 
@@ -50,12 +49,11 @@
 		justify-content: center;
   }  
   .genre:hover {
-		background-color: rgb(155, 89, 218);
+		background-color: rgb(19, 143, 70);
 		color: black;
 	}
 
 	.selected {
-    font-weight: 900;
     background-color: var(--selected);
     scale: 1.1;
   }

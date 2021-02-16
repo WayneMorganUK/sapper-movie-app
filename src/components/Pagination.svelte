@@ -63,22 +63,25 @@
 </script>
 
 {#if (total_pages > 1) }
-  <section class= 'pagination' transition:fade>
+  <section class= 'pagination' >
     {#each pages as page}
       {#if (page === LEFT_PAGE)}
-        <a class="page-link" href="" aria-label="Previous" on:click|preventDefault ="{() => handleClick($current_page -1)}">
+        <button class="page-link" aria-label="Previous" on:click|preventDefault ="{() => handleClick($current_page -1)}">
           <i class="fa fa-angle-left"></i>
-        </a>
+        </button>
       {:else if (page === RIGHT_PAGE)}
-        <a class="page-link" href="" aria-label="Next" on:click|preventDefault ="{() => handleClick($current_page + 1)}">
+        <button class="page-link" href="" aria-label="Next" on:click|preventDefault ="{() => handleClick($current_page + 1)}">
           <i class="fa fa-angle-right"></i>
-        </a>
+        </button>
       {:else}
-        <a class="page-link { $current_page === page ? 'active' : ''}" href="" on:click|preventDefault ="{() => handleClick(page) }">{ page }</a>
+        <button class="page-link { $current_page === page ? 'active' : ''}" href="" on:click|preventDefault ="{() => handleClick(page) }">
+          { page }
+        </button>
       {/if}
     {/each}
   </section>
 {/if}
+
 
 <style>
   i {
@@ -86,6 +89,7 @@
   }
 
   .page-link {
+    color:var(--light-text);
     width: 95px;
 		background-color:var(--secondary-colour);
 		border-radius:30px;
@@ -98,15 +102,15 @@
 		display: flex;
 		justify-content: center;
 		transition: all .4s ease-in-out;
+    align-items: center;
   }  
   .page-link:hover {
     background-color: rgb(155, 89, 218);
 		color: black;
+    cursor: pointer;
 	}
   .active {
-    font-weight: 900;
     background-color:var(--selected);
-    scale: 1.1;
   }
 
 	.pagination {
@@ -115,7 +119,7 @@
 		margin: 5px auto;
 		padding: 2px;
     display: flex;
-    flex: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
 		font-size: 12px;
 		border-radius: 15px;

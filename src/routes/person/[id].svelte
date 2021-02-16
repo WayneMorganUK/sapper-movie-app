@@ -5,6 +5,7 @@
   import { stores } from '@sapper/app';
 	const { page } = stores(); 
 	const { params } = $page;
+  console.log('Person ID page')
 
   
   const ApiKey = process.env.SAPPER_APP_API_KEY

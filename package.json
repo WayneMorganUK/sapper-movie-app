@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "sapper-movie-app",
+  "description": "Movie & Tv app",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",

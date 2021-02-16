@@ -2,6 +2,7 @@
 	import Header from '../components/Header.svelte'
 	import Genres from '../components/Genres.svelte'
 	import { media_type } from '../components/store'
+	console.log('Layout page')
 </script>
 
 
