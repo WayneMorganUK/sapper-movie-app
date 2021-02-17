@@ -1,6 +1,7 @@
 <script>
   import { onMount } from  'svelte'
   import KnownFor from '../../components/KnownFor.svelte'
+  import Spinner from '../../components/Spinner.svelte'
 
   import { stores } from '@sapper/app';
 	const { page } = stores(); 
@@ -25,7 +26,7 @@
 
 </script>
 
-
+{#if person.id}
   <div class='container'>
     <div class='wrapper'>
       <div class='personal'>
@@ -76,6 +77,9 @@
       </div>
     </div>
   </div>
+  {:else}
+	<Spinner />
+{/if}
 
 
 <style>
@@ -83,7 +87,7 @@
     padding-top: 30px;
   }
   .info {
-    max-width: 950px;
+    max-width: 1000px;
     width:100%;
   }
   h2 {
@@ -125,7 +129,7 @@
   }
 
   img, .icon {
-    width: 300px;
+    width: 250px;
     border-radius: 15px;
   }
 

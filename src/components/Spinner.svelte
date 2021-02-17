@@ -8,27 +8,29 @@
 
 <style>
   .spinner {
-    height: 100%;
-    width: 100%;
+    display: flex;
     position: absolute;
+    align-content: center;
+    height: 100px;
+    width: 150px;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
   }
   .balls {
-    /* width: 3.5em; */
     display: inline-flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-    padding: 1em;
+    width: 50px;
   }
 
   .balls div {
     width: 0.8em;
     height: 0.8em;
     border-radius: 50%;
-    background-color: #fc2f70;
+    background-color: var(--primary-colour);
     transform: translateY(-100%);
     animation: wave 0.8s ease-in-out alternate infinite;
   }

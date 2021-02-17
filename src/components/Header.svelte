@@ -1,6 +1,13 @@
 <script>
   import ToggleTvMovie from './ToggleTvMovie.svelte'
   import Search from './Search.svelte'
+  import { stores } from '@sapper/app';
+  
+	const { page } = stores(); 
+	const { params } = $page;
+
+  console.log('params id', params)
+
   
 </script>
 
@@ -40,7 +47,4 @@
     text-decoration: none;
     cursor: pointer;
   }
-
-
- 
 </style>

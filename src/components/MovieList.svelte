@@ -1,6 +1,7 @@
 <script>
 	import MovieCard from '../components/MovieCard.svelte'
 	import { fade } from 'svelte/transition'
+	import Spinner from '../components/Spinner.svelte'
 	export let movies
 </script>
 
@@ -9,6 +10,8 @@
 		{#each movies as movie, i}
 			<MovieCard key={i} {...movie}/>
 		{/each}
+	{:else}
+		<Spinner />
 	{/if}
 </section>
 
@@ -24,6 +27,5 @@
 		margin-right: auto;
 		border-radius:15px;
 	}
-
 
 </style>

@@ -55,15 +55,10 @@
  }
   
   .movie-inner {
-    /* position: relative;
-    width: 100%;
-    height: 100%; */
     transition: transform 0.8s;
     transform-style: preserve-3d;
   } 
   .movie-front, .movie-back {
-    /* width: 100%;
-    height: 100%; */
     color: var(--dark-text);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -73,7 +68,6 @@
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
-
 
   .movie-back {
     transform: rotateY(180deg);
@@ -118,6 +112,7 @@
   a {
     text-decoration: none;
   }
+
   .movie:hover .movie-inner {
     transform: rotateY(180deg);
   }
@@ -126,7 +121,7 @@
     padding: 0.5rem;
     margin-left: 1rem;
   }
-  
+
   .movie-info h3 {
     margin: 0;
     font-weight: 600;
@@ -148,5 +143,5 @@
     top: 309px;
     color:var(--dark-text);
   }
-  
-  </style>
+
+</style>

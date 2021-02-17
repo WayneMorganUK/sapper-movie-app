@@ -43,7 +43,7 @@
     cursor: pointer; 
   }  
   .persons-card:hover {
-    transform: scale(1.1);
+    background-color:var(--selected);
   }
   .name {
     color: var(--light-text);
@@ -56,9 +56,12 @@
   }
 
   .container {
-    margin: 0 auto;
+    margin: 20px auto;
     width: 1250px;
-    padding-bottom: 70px;
+    padding-left: 20px;
+    background-color: var(--secondary-colour);
+    border-radius: 15px;
+    padding-top: 5px;
   }
 
   .person-wrapper {

@@ -104,11 +104,11 @@
 		transition: all .4s ease-in-out;
     align-items: center;
   }  
-  .page-link:hover {
-    background-color: rgb(155, 89, 218);
-		color: black;
+  .page-link:hover:not(.active) {
+    color: black;
+    background-color: rgb(19, 143, 70);
     cursor: pointer;
-	}
+  }
   .active {
     background-color:var(--selected);
   }

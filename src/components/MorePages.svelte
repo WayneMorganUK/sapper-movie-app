@@ -15,7 +15,7 @@
 {#if (total_pages > 1) }
 
 <section class= 'more'>
-  <a class="page-link" href="#" aria-label="Previous" on:click|preventDefault ="{() => handleMorePages()}">MORE</a>
+  <button class="page-link" aria-label="Previous" on:click|preventDefault ="{() => handleMorePages()}">MORE</button>
 </section>
 
 {/if}
@@ -37,12 +37,14 @@
   justify-content: center;
   transition: all .4s ease-in-out;
   min-width: 200px;
+  color: var(--light-text)
 
 }  
 .page-link:hover {
-  transform: scale(1.2);
-}
-
+  color: black;
+    background-color: rgb(19, 143, 70);
+    cursor: pointer;
+  }
 
 .more {
   background-color: var(--primary-colour);

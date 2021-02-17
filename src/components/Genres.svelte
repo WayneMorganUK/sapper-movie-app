@@ -47,15 +47,16 @@
 		padding-top: 1px;
 		display: flex;
 		justify-content: center;
-  }  
-  .genre:hover {
-		background-color: rgb(19, 143, 70);
-		color: black;
-	}
+  }
 
 	.selected {
     background-color: var(--selected);
-    scale: 1.1;
+		cursor: default;
   }
 
+	.genre:hover:not(.selected) {
+    color: black;
+    background-color: rgb(19, 143, 70);
+    cursor: pointer;
+  }
 </style>

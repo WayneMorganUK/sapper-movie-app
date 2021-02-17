@@ -95,7 +95,7 @@ h3 {
   transition: all .4s ease-in-out;
 }  
 .movie:hover {
-  transform: scale(1.1);
+  background-color:var(--selected);
 }
 
 img {

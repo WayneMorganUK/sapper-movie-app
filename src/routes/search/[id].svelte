@@ -2,6 +2,7 @@
 	import MainSection from '../../components/MainSection.svelte'
 	import { stores } from '@sapper/app';
 	import { media_type } from '../../components/store.js'
+import Spinner from '../../components/Spinner.svelte';
 
 	const { page } = stores(); 
   const ApiKey = process.env.SAPPER_APP_API_KEY
@@ -15,4 +16,6 @@
 	{#key $page}
 		<MainSection id = 'search' {api_url} />
 	{/key}
+	{:else}
+	<Spinner />
 {/if}

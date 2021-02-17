@@ -89,7 +89,7 @@
     </div>
   </div>
   <div>
-    <Persons {tv_id} />
+    <Persons movie_id = {tv_id} />
   </div>
   <Modal bind:this={modal}>
     <iframe width='1080' height="600" title='preview'
