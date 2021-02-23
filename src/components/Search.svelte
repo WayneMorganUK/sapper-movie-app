@@ -50,10 +50,17 @@
     padding: 0.5rem 1.0rem;
     height: 30px;
     color: var(--light-text);
+    
   }
   
   .search:focus {
     outline: 0;
   }
+  @media only screen and (max-width: 600px) {
+    .search {
+  width: 120px;
+  }
+}
+
 
     </style>

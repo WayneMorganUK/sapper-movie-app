@@ -28,7 +28,6 @@
           <i class="fa fa-video-camera" aria-hidden="true"></i>
       </button>
   </div>
-
   <div class="anchor">
       <button 
         class:active={$media_type==='tv'}
@@ -43,18 +42,18 @@
     display: flex;
     justify-content: right;
     align-items:center;
+    width: 120px;
     height: 30px;
     color: var(--light-text);
     border-left: 2px solid var(--light-text);
     border-top: 2px solid var(--light-text);
     border-bottom: 2px solid var(--border-colour);
     border-right: 2px solid var(--border-colour);
-    border-radius: 30px;
+    border-radius: 15px;
   }
 
   .anchor {
     box-sizing: border-box;
-    
     left: 0px;
     position: relative;
     top: 0px;
@@ -74,14 +73,16 @@
     transition-property: -webkit-text-fill-color;
     transition-timing-function: ease;
     color: var(--light-text);
-    padding: 4.5px 20px;
+    height:28px;
+    width: 59px;
     border-radius: 15px;
     border:none;
-    background-color: inherit;
+    background-color: var(--background-color);
+    border: 1px solid var(--background-color);
   }
 
   button:hover:not(.active) {
-    color: rgb(19, 143, 70);
+    color:var(--selected);
     cursor: pointer;
   }
 

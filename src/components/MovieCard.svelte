@@ -143,5 +143,9 @@
     top: 309px;
     color:var(--dark-text);
   }
-
+  @media (hover:hover) {
+    .movie:hover .movie-inner {
+    transform: rotateY(180deg);
+  }
+	}
 </style>

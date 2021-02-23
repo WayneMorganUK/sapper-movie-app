@@ -1,19 +1,16 @@
 <script>
   import ToggleTvMovie from './ToggleTvMovie.svelte'
   import Search from './Search.svelte'
-  import { stores } from '@sapper/app';
+  import { stores } from '@sapper/app'
   
-	const { page } = stores(); 
-	const { params } = $page;
+	const { page } = stores()
+	const { params } = $page
 
-  console.log('params id', params)
-
-  
 </script>
 
 <header>
   <div class='header-top'>
-    <a class='home' href='.'><i class="fa fa-home"></i> Home</a>
+    <a class='home' href='.'><i class="fa fa-home"></i></a>
     <div class='tv-movie-select'>
       <ToggleTvMovie />
     </div>
@@ -47,4 +44,6 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+
 </style>

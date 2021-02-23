@@ -2,8 +2,7 @@
 	import MovieList from './MovieList.svelte'
 	import Pagination from './Pagination.svelte'
 	import MorePages from './MorePages.svelte'
-	import {fade} from 'svelte/transition'
-	import { onMount, afterUpdate, beforeUpdate, tick} from 'svelte'
+	import { onMount } from 'svelte'
 	import { current_page } from './store.js'
 	export let api_url
 	$current_page = 1

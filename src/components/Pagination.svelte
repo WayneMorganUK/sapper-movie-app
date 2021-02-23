@@ -99,10 +99,10 @@
 		font-weight: 600;
 		padding-bottom: 2px;
 		padding-top: 1px;
-		display: flex;
-		justify-content: center;
+		/* display: flex; */
+		/* justify-content: center; */
 		transition: all .4s ease-in-out;
-    align-items: center;
+    /* align-items: center; */
   }  
   .page-link:hover:not(.active) {
     color: black;
@@ -124,4 +124,15 @@
 		font-size: 12px;
 		border-radius: 15px;
 	}
+  @media only screen and (max-width: 600px) {
+  .pagination {
+    border-radius: 0;
+    justify-content: space-between;
+  }
+  .page-link {
+    /* width: max-content; */
+    margin: 1px;
+    /* justify-content: space-between; */
+  }
+}
 </style>

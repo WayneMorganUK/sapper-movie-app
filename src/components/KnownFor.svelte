@@ -75,16 +75,7 @@ h3 {
   display: flex;
   overflow-y: hidden;
 }
-/* .container::after {
-    content: '';
-    width: 60px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-image: linear-gradient(to right, rgba(255,255,255,0) 0%, #932432 100%);
-    will-change: opacity;
-  } */
+
 .movie {
   text-decoration: none;
   margin-bottom: 0.5rem;

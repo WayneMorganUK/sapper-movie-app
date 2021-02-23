@@ -1,24 +1,13 @@
 <script>
-  import { onMount } from 'svelte'
 	import { media_type } from '../components/store.js'
-	// import { fade } from 'svelte/transition'
+	import { genres_list } from '../components/store.js'
 
-  const ApiKey = process.env.SAPPER_APP_API_KEY
-	const GENRES_API = `https://api.themoviedb.org/3/genre/${$media_type}/list?api_key=${ApiKey}&language-en-GB`
-
-	let genres = []
 	let selected=''
-		
-	onMount(async () => {
-		genres = await fetch(GENRES_API)
-		.then(x => x.json())
-		.then(x => x.genres)
-	})
 
 </script>
 
 <div class='sticky'>
-		{#each genres as genre}
+		{#each $genres_list[$media_type] as genre}
 			<a 
 				on:click="{() => selected=genre.id}"
 				class:selected="{selected===genre.id}"
@@ -32,7 +21,8 @@
 <style>
 	.sticky {
 		display: flex;
-		position: absolute;
+		overflow-y:hidden;
+
 	}
   .genre {
 		background-color: var(--secondary-colour);
@@ -46,7 +36,9 @@
 		padding-right: 8px;
 		padding-top: 1px;
 		display: flex;
+		flex-wrap: nowrap;
 		justify-content: center;
+		white-space: nowrap;
   }
 
 	.selected {
@@ -56,7 +48,11 @@
 
 	.genre:hover:not(.selected) {
     color: black;
-    background-color: rgb(19, 143, 70);
+    background-color: var(--selected);
     cursor: pointer;
   }
+	@media only screen and (max-width: 600px) {
+
+  }
+
 </style>
