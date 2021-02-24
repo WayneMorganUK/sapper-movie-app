@@ -110,13 +110,13 @@
   }
   .container {
     margin: 0 auto;
-    width: 1250px;
+    max-width: 1250px;
     padding-bottom: 70px;
   }
 
   .wrapper {
-    display: flex;
-    overflow: auto;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
   }
 
   .persons-card {
@@ -140,6 +140,25 @@
     position: relative;
     top: 40px;
     left: 20px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .wrapper{
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .personal {
+      padding: 20px;
+    }
+    img {
+      width: 100%;
+    }
+    .persons-card {
+      margin-left: 0;
+    }
+    .container {
+      padding-bottom: 0;
+    }
   }
 </style>
 

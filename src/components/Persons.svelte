@@ -107,5 +107,26 @@
     left: 20px;
     z-index: 1;
   }
+  @media only screen and (max-width: 600px) {
+    .person-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .container {
+      width: auto;
+      margin: 2px auto;
+      padding-left: 2px;
+      background-color: var(--secondary-colour);
+      border-radius: 0;
+      padding-top: 5px;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    img {
+      border-radius: 3px;
+      object-fit: contain;
+      width: 100%;
+    }
+  }
 </style>
 

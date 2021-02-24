@@ -40,8 +40,8 @@
   <div class='detail-header' style='background-image: url({IMAGE_API}original/{movie_details.backdrop_path})'>
     <div class='overlay'>
       <div class='keyboard'>
-        <div class='single-column'>
-          <div class='detail-inner'>
+        <div class='grid-layout'>
+
             <div class='poster-img'><img src={IMAGE_API + 'w500' +  movie_details.poster_path} alt='movie poster'></div>
             <div class='movie-data'>
               <div class='title'>
@@ -84,27 +84,22 @@
               </div>
             </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
   <div>
     <Persons movie_id = {tv_id} />
   </div>
-  <Modal bind:this={modal}>
-    <iframe width='1080' height="600" title='preview'
-      src="https://www.youtube.com/embed/{trailer_id}"
-        controls='true'>
-      <track default
-      kind="captions" />
-    </iframe>
-  </Modal>
+  {#if trailer_id}
+    <Modal bind:this={modal} {trailer_id}></Modal>
+  {/if}
 {:else}
   <Spinner />
 {/if}
 
 
 <style>
+
   .play-trailer p {
     display: flex;
     justify-content: center;
@@ -201,7 +196,9 @@
   .overlay {
 	  background-image: linear-gradient(to right, rgb(158, 0, 1) 150px, rgba(105, 17, 145, 0.84) 100%);
   }
-  .single-column {
+  .grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 40px;
@@ -212,10 +209,6 @@
     box-sizing: border-box;
   }
 
-  .detail-inner {
-    display:flex;
-    flex-wrap: nowrap;
-  }
   .poster-img img{
     border-width: 0;
     height: 450px;
@@ -268,5 +261,10 @@
   .facts {
     display: flex;
   }
-
+  @media only screen and (max-width: 600px) {
+  .grid-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  }
 </style>

@@ -99,10 +99,7 @@
 		font-weight: 600;
 		padding-bottom: 2px;
 		padding-top: 1px;
-		/* display: flex; */
-		/* justify-content: center; */
 		transition: all .4s ease-in-out;
-    /* align-items: center; */
   }  
   .page-link:hover:not(.active) {
     color: black;
@@ -130,9 +127,12 @@
     justify-content: space-between;
   }
   .page-link {
-    /* width: max-content; */
-    margin: 1px;
-    /* justify-content: space-between; */
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    padding-right:5px;
+    padding-left: 5px;
+    max-width:90px;
   }
 }
 </style>

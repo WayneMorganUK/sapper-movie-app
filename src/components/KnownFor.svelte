@@ -94,4 +94,14 @@ img {
   border-radius: 3px;
 }
 
+@media only screen and (max-width: 600px) {
+  .container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
 </style>
