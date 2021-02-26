@@ -262,9 +262,23 @@
     display: flex;
   }
   @media only screen and (max-width: 600px) {
-  .grid-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    img {
+      margin-left: auto;
+      margin-right: auto;
+      align-content: center;
+      display: flex;
+    }
+    .movie-data {
+      padding-left: 0;
+    }
+    .movie-title {
+      font-size: 1.8rem;
+    }
   }
 </style>

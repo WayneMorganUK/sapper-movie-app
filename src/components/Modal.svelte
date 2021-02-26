@@ -13,18 +13,21 @@
 {#if shown}
   <div class="modal-wrapper">
     <div class="modal">
+      
         <div class = 'header'>
-          <div class='title'>Trailer</div>
-          <div class="close" on:click={() => hide()}>Close</div>
-        </div>    
+          <!-- <div class='title'>Trailer</div> -->
+          
+          </div>
+         
         <div class= 'ytplayer'>
           <iframe class='trailer'  title='preview'
             src="https://www.youtube.com/embed/{trailer_id}"
-            controls='true'>
+            controls='true'
+            allowfullscreen >
             <track default kind="captions" />
         </iframe>
         </div>
-    </div>
+    </div><div class="close" on:click={() => hide()}><i class="fa fa-window-close" aria-hidden="true"></i></div>   
   </div>
 {/if}
 
@@ -53,35 +56,41 @@
   }
 
   .modal {
-    background-color:var(--background-colour);
-    padding: 1rem;
+    background-color: var(--background-colour);
     margin: 0 auto;
-    overflow:hidden;
-    padding-bottom:56.25%;
-    position:relative;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
     height: 80vh;
     width: 80vw;
-    padding-bottom: calc(56% - 34px);
+    padding-top: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   .header {
     display: inline-flex;
     justify-content: space-between;
   }
-  .title, .close {
-    font-size: 1.5em;
-    font-weight: 700;
-  }
   .close {
     cursor: pointer;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: red;
+    font-size: 3rem;
   }
   .close:hover {
     font-weight: bold;
   }
-  @media only screen and (max-width: 600px) {
-  .ytplayer {
-    height: 100vh;
-    width: 100vw;
-  }
+  @media only screen and (max-width: 640px) {
+    /* .ytplayer {
+      height: 100vh;
+      width: 100vw;
+    } */
+    .close {
+      font-size: 1rem;
+    }
+
   }
 
 </style>

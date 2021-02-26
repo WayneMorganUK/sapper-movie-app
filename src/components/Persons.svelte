@@ -23,14 +23,15 @@
       
         <div class='persons-card'>
           <a class='person-link' href={`person/${person.id}`} key={person.id}>
-          {#if person.profile_path}
-            <img src={ IMAGE_API + person.profile_path } alt='profile'>
-            {:else}
-            <i class="icon fa fa-user-o fa-5x"></i>
-            {/if}
-          <h4 class='name'>{person.name}</h4> </a>
+            {#if person.profile_path}
+              <img src={ IMAGE_API + person.profile_path } alt='profile'>
+              {:else}
+              <i class="icon fa fa-user-o fa-5x"></i>
+              {/if}
+            <h4 class='character'>{person.character}</h4>
+            <h4 class='name'>{person.name}</h4>
+          </a>
         </div>
-     
       {/each}
     </div>
   </div>
@@ -45,7 +46,7 @@
   .persons-card:hover {
     background-color:var(--selected);
   }
-  .name {
+  .name, .character{
     color: var(--light-text);
     margin: 0;
     font-weight: 400;
@@ -53,6 +54,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .name {
+    font-weight:400;
+    color: var(--light-text);
+  }
+  
+  .character{
+    font-weight:600;
+    color:rgb(246, 236, 96);
   }
 
   .container {
@@ -126,6 +136,9 @@
       border-radius: 3px;
       object-fit: contain;
       width: 100%;
+    }
+    .persons-card {
+      margin: 0.15rem;
     }
   }
 </style>
