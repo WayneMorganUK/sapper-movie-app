@@ -10,21 +10,39 @@
 		}
   }
 </script>
-
-<form label='search form'
+<div class=''>
+<form class='flex justify-end items-center pr-0.5' label='search form'
   on:submit|preventDefault = {handleOnSubmit}>
   <input 
     label='search'
-    class='search'
+    class='bg-transparent h-7 rounded-full text-l px-2 text-textLight placeholder-textLight::placeholder border-2 border-border'
     type='text'
     placeholder='Search...'
     bind:value={searchTerm}
     on:change = {(e) => (e.target.value)}
   />
 </form>
+</div>
 
-  <style>
-    input[type=text], .search {
+  <style>    
+  /* form {
+    display: flex;
+    justify-content: right;
+    align-items:center;
+  }  
+  .search {
+    background-color: transparent;
+    border-radius: 30px;
+    font-family: inherit;
+    font-size: 1.2rem;
+    padding: 0.5rem 1.0rem;
+    height: 30px;
+    color: var(--light-text);
+  }
+    .search:focus {
+    outline: 0;
+  } */
+    /* input[type=text], .search {
       color: var(--light-text);
       border-left: 2px solid var(--light-text);
       border-top: 2px solid var(--light-text);
@@ -34,33 +52,18 @@
   
     input[type=text]::placeholder {
       color:   var(--light-text);
-    }
+    } */
 
-    form {
-    display: flex;
-    justify-content: right;
-    align-items:center;
-  }
 
-  .search {
-    background-color: transparent;
-    border-radius: 30px;
-    font-family: inherit;
-    font-size: 1.2rem;
-    padding: 0.5rem 1.0rem;
-    height: 30px;
-    color: var(--light-text);
-    
-  }
+
+
   
-  .search:focus {
-    outline: 0;
-  }
+/* 
   @media only screen and (max-width: 600px) {
     .search {
   width: 120px;
   }
-}
+} */
 
 
     </style>

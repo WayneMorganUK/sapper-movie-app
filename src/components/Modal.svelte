@@ -21,7 +21,7 @@
          
         <div class= 'ytplayer'>
           <iframe class='trailer'  title='preview'
-            src="https://www.youtube.com/embed/{trailer_id}"
+            src="https://www.youtube.com/embed/{trailer_id}?rel=0"
             controls='true'
             allowfullscreen >
             <track default kind="captions" />

@@ -61,34 +61,34 @@
   $: fetchPageNumbers($current_page)
 
 </script>
-
+<section class= 'max-w-7xl mx-auto' >
+  <div class='bg-primary flex flex-nowrap my-1 p-1 justify-between h-8 text-xs xl:rounded-full' >
 {#if (total_pages > 1) }
-  <section class= 'pagination' >
     {#each pages as page}
       {#if (page === LEFT_PAGE)}
-        <button class="page-link" aria-label="Previous" on:click|preventDefault ="{() => handleClick($current_page -1)}">
+        <button class="bg-secondary text-textLight w-24 border-border  no-underline rounded-full border-2" aria-label="Previous" on:click|preventDefault ="{() => handleClick($current_page -1)}">
           <i class="fa fa-angle-left"></i>
         </button>
       {:else if (page === RIGHT_PAGE)}
-        <button class="page-link" href="" aria-label="Next" on:click|preventDefault ="{() => handleClick($current_page + 1)}">
+        <button class="bg-secondary text-textLight w-24 border-border  no-underline rounded-full border-2" aria-label="Next" on:click|preventDefault ="{() => handleClick($current_page + 1)}">
           <i class="fa fa-angle-right"></i>
         </button>
       {:else}
-        <button class="page-link { $current_page === page ? 'active' : ''}" href="" on:click|preventDefault ="{() => handleClick(page) }">
+        <button class="bg-secondary text-textLight w-24 border-border  no-underline rounded-full border-2 { $current_page === page ? 'active' : ''}" on:click|preventDefault ="{() => handleClick(page) }">
           { page }
         </button>
       {/if}
     {/each}
-  </section>
-{/if}
-
+  
+{/if}</div>
+</section>
 
 <style>
   i {
     font-size: 14px;
   }
 
-  .page-link {
+  /* .page-link {
     color:var(--light-text);
     width: 95px;
 		background-color:var(--secondary-colour);
@@ -100,17 +100,17 @@
 		padding-bottom: 2px;
 		padding-top: 1px;
 		transition: all .4s ease-in-out;
-  }  
-  .page-link:hover:not(.active) {
+  }   */
+  /* .page-link:hover:not(.active) {
     color: black;
     background-color: rgb(19, 143, 70);
     cursor: pointer;
-  }
+  } */
   .active {
     background-color:var(--selected);
   }
 
-	.pagination {
+	/* .pagination {
 		background-color: var(--primary-colour);
 		max-width: 1250px;
 		margin: 5px auto;
@@ -120,8 +120,9 @@
     justify-content: center;
 		font-size: 12px;
 		border-radius: 15px;
-	}
-  @media only screen and (max-width: 600px) {
+    height: 30px;
+	} */
+  /* @media only screen and (max-width: 600px) {
   .pagination {
     border-radius: 0;
     justify-content: space-between;
@@ -134,5 +135,5 @@
     padding-left: 5px;
     max-width:90px;
   }
-}
+} */
 </style>

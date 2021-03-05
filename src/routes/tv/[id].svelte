@@ -1,41 +1,33 @@
 <script>
-  
-  import ProgressBar from '../../components/ProgressBar.svelte'
   import { getMovieDetails, } from '../../components/fetchData'
   import { getTrailerId } from '../../components/fetchTrailer'
-  import Spinner from '../../components/Spinner.svelte'
-  import Modal from "../../components/Modal.svelte"
-  import Persons from '../../components/Persons.svelte'
-  import { media_type } from '../../components/store.js'
+  import { media_type, ApiKey } from '../../components/store.js'
   import { stores } from '@sapper/app';
+  import Media from '../../components/Media.svelte'
   $media_type= 'tv'
 	const { page } = stores(); 
 	const { params } = $page;
 
-  let tv_id = params.id
+  let movie_id = params.id
 
-  const ApiKey = process.env.SAPPER_APP_API_KEY
-  const MOVIE_DETAIL_API = `https://api.themoviedb.org/3/tv/${tv_id}?api_key=${ApiKey}&language=en-US`
-  const VIDEO_API = `https://api.themoviedb.org/3/tv/${tv_id}/videos?api_key=${ApiKey}&language=en-US`
-  const IMAGE_API = "https://image.tmdb.org/t/p/"
-  
-  let modal;
-  window.scrollTo({top: -1000, behavior: 'smooth'})
+  const MOVIE_DETAIL_API = `https://api.themoviedb.org/3/tv/${movie_id}?api_key=${$ApiKey}&language=en-US`
+  const VIDEO_API = `https://api.themoviedb.org/3/tv/${movie_id}/videos?api_key=${$ApiKey}&language=en-US`
   
   let movie_details = []
-  let active=false
   let trailer_id
 
   getMovieDetails(MOVIE_DETAIL_API).then(x => movie_details = x )
 
   getTrailerId(VIDEO_API).then(x => trailer_id = x )
 
-  function toggleTrailer() {
-      active = !active
-  }
+
 
 </script>
 
+{#if movie_details.id && trailer_id}
+  <Media {movie_details} {trailer_id} {movie_id}/>
+{/if}
+<!-- 
 {#if movie_details.name}
   <div class='detail-header' style='background-image: url({IMAGE_API}original/{movie_details.backdrop_path})'>
     <div class='overlay'>
@@ -55,7 +47,7 @@
                       <a class='genre' href=#/genre/{genre.id} key={genre.id}>{genre.name}</a>
                     {/each}
                   </div>
-                  <!-- <div class='duration'>{(movie_details.runtime - (movie_details.runtime % 60))/60}h {movie_details.runtime % 60}m</div> -->
+                  <div class='duration'>{(movie_details.runtime - (movie_details.runtime % 60))/60}h {movie_details.runtime % 60}m</div>
                 </div>
               </div>
               <div class='auto'>
@@ -281,4 +273,4 @@
       font-size: 1.8rem;
     }
   }
-</style>
+</style> -->

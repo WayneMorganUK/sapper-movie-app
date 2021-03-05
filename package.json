@@ -3,12 +3,19 @@
   "description": "Movie & Tv app",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev",
-    "build": "sapper build --legacy",
+    "dev": "run-p start:dev watch:css",
+    "build": "npm run build:css && sapper build --legacy",
+    "watch:css": "postcss static/global.css -o static/index.css -w",
+    "build:css": "NODE_ENV=production postcss static/global.css -o static/index.css",
     "export": "sapper export --legacy",
-    "start": "node __sapper__/build"
+    "start": "node __sapper__/build",
+    "start:dev": "sapper dev",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "test": "run-p --race dev cy:run"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.2.0",
     "compression": "^1.7.1",
     "polka": "next",
     "sapper-environment": "^1.0.1",
@@ -25,11 +32,25 @@
     "@rollup/plugin-node-resolve": "^8.0.0",
     "@rollup/plugin-replace": "^2.3.4",
     "@rollup/plugin-url": "^5.0.0",
+    "autoprefixer": "^10.2.5",
+    "concurrently": "^6.0.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.2.7",
+    "postcss-cli": "^8.3.1",
+    "postcss-import": "^14.0.0",
+    "postcss-load-config": "^3.0.1",
+    "postcss-nested": "^5.0.4",
     "rollup": "^2.3.4",
-    "rollup-plugin-svelte": "^7.0.0",
+    "rollup-plugin-svelte": "^7.1.0",
     "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.0",
-    "svelte": "^3.17.3"
+    "svelte": "^3.17.3",
+    "svelte-preprocess": "^4.6.9",
+    "tailwindcss": "^2.0.3"
+  },
+  "optionalDependencies": {
+    "win-node-env": "^0.4.0"
   }
 }

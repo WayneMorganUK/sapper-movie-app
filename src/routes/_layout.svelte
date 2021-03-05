@@ -5,9 +5,11 @@
 
   export async function preload() {
 		const genres={}
+
     const res_mov = await this.fetch(GENRES_MOVIE_API)
 		const res_mov_json = await res_mov.json()
 		genres.movie = await res_mov_json.genres
+
 		const res_tv = await this.fetch(GENRES_TV_API)
 		const res_tv_json = await res_tv.json()
 		genres.tv = await res_tv_json.genres
@@ -35,35 +37,9 @@
 	<title>TMDB on Sapper</title>
 </svelte:head>
 
-<main>
+<main class='overflow-y-hidden'>
 	<Header />
-	<div class='genres'>
-		{#key $media_type}
-			<Genres />
-		{/key}
-	</div>
+
 	<slot></slot>
 </main>
 
-<style>
-	main {
-		overflow-y:hidden;
-	}
-
-	.genres{
-		height: 30px;
-		background-color: var(--primary-colour);
-		max-width: 1250px;
-		margin: 5px auto;
-		padding: 2px;
-		font-size: 0.7em;
-		border-radius: 15px;
-		align-items:center;
-		justify-content: center;
-	}
-	@media only screen and (max-width: 600px) {
-  .genres {
-    border-radius: 0;
-  }
-	}
-</style>

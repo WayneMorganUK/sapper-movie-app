@@ -5,7 +5,7 @@
 	export let movies
 </script>
 
-<section class='movie-container'>
+<section class='bg-primary flex flex-wrap justify-around max-w-7xl mx-auto xl:rounded-2xl'>
 	{#if movies.length > 0 } 
 		{#each movies as movie, i}
 			<MovieCard key={i} {...movie}/>
@@ -17,7 +17,7 @@
 
 <style>
 
-	.movie-container {
+	/* .movie-container {
 		background-color:var(--primary-colour);
 		display: flex;
 		flex-wrap: wrap;
@@ -26,6 +26,6 @@
 		margin-left: auto;
 		margin-right: auto;
 		border-radius:15px;
-	}
+	} */
 
 </style>

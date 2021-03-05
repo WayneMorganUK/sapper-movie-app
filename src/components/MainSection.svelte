@@ -2,6 +2,7 @@
 	import MovieList from './MovieList.svelte'
 	import Pagination from './Pagination.svelte'
 	import MorePages from './MorePages.svelte'
+	import Genres from  './Genres.svelte'
 	import { onMount } from 'svelte'
 	import { current_page } from './store.js'
 	export let api_url
@@ -30,7 +31,7 @@
  }
 </script>
 
-
+<Genres />
 {#if total_pages&&$current_page}
 	<Pagination
 		{total_pages}

@@ -14,14 +14,27 @@
 
 {#if (total_pages > 1) }
 
-<section class= 'more'>
-  <button class="page-link" aria-label="Previous" on:click|preventDefault ="{() => handleMorePages()}">MORE</button>
+<section class= 'bg-primary max-w-7xl mx-auto xl:my-3 flex justify-center xl:rounded-full'>
+  <button 
+    class="bg-secondary rounded-3xl border-border border-2 mx-1 my-2 text-semibold pb-1 pt-0.5 px-5 flex justify-center w-52 text-textLight hover:text-textDark hover:bg-selected"
+    aria-label="Previous" on:click|preventDefault ="{() => handleMorePages()}">
+    MORE
+  </button>
 </section>
 
 {/if}
 
 <style>
-
+/* .more {
+  background-color: var(--primary-colour);
+  max-width: 1250px;
+  margin: 10px auto;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  border-radius: 15px;
+}
 .page-link {
   background-color:var(--secondary-colour);
   border-radius:30px;
@@ -45,15 +58,6 @@
     background-color: rgb(19, 143, 70);
     cursor: pointer;
   }
+ */
 
-.more {
-  background-color: var(--primary-colour);
-  max-width: 1250px;
-  margin: 10px auto;
-  padding: 5px 20px;
-  display: flex;
-  justify-content: center;
-  font-size: 16px;
-  border-radius: 15px;
-}
 </style>

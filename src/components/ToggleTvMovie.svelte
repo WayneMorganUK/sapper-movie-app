@@ -1,4 +1,4 @@
-<script>
+ <script>
   import { current_page, media_type } from './store.js'
   import { goto } from '@sapper/app';
 
@@ -10,7 +10,7 @@
     }
   }
 
-  async function toggleTv() {
+  function toggleTv() {
     if ($media_type !== 'tv'){
       $current_page = 1
       $media_type='tv'
@@ -20,16 +20,20 @@
 
 </script>
 
-<div class="selector">
-  <div class="anchor">
+<div class="flex justify-right items-center w-20 md:w-28 h-7 text-textLight border-2 border-border rounded-full">
+  <div class="relative">
       <button
         class:active={$media_type==='movie'}
+        class='inline-flex items-center justify-center whitespace-nowrap content-center text-textLight h-7 w-10 md:w-14 rounded-full border-background
+        hover-selected'
         on:click|preventDefault = {toggleMovie}>
           <i class="fa fa-video-camera" aria-hidden="true"></i>
       </button>
   </div>
-  <div class="anchor">
-      <button 
+  <div class="relative">
+      <button
+      class='inline-flex items-center justify-center whitespace-nowrap content-center text-textLight h-7 w-10 md:w-14 rounded-full  border-background
+      hover-selected'
         class:active={$media_type==='tv'}
         on:click|preventDefault = {toggleTv}>
           <i class="fa fa-television" aria-hidden="true"></i>
@@ -38,7 +42,7 @@
 </div>
 
 <style>
-  .selector {
+  /* .selector {
     display: flex;
     justify-content: right;
     align-items:center;
@@ -58,9 +62,9 @@
     position: relative;
     top: 0px;
     z-index: 1
-  }
+  } */
 
-  button {
+  /* button {
     display: inline-flex;
     align-content: center;
     align-items: center;
@@ -79,7 +83,7 @@
     border:none;
     background-color: var(--background-color);
     border: 1px solid var(--background-color);
-  }
+  } */
 
   button:hover:not(.active) {
     color:var(--selected);
