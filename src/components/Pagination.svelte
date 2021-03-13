@@ -61,23 +61,25 @@
    
 </script>
 {#if (total_pages > 1) }
-<section id='pagination' class='wide p-1 justify-between' >
+<section id='pagination' class='max-w-7xl mx-auto p-0.5 justify-between' >
+  <div class='bg-primary flex flex-nowrap justify-between p-0.5 h-8 text-xs xl:rounded-full' >
   
     {#each pages as page}
       {#if (page === LEFT_PAGE)}
-        <button class="btn" aria-label="Previous" on:click|preventDefault ="{() => handleClick($current_page -1)}">
+        <button class="bg-secondary m-0.5 text-textLight w-24 border-border  no-underline rounded-full border-2" aria-label="Previous" on:click|preventDefault ="{() => handleClick($current_page -1)}">
           <i class="fa fa-angle-left"></i>
         </button>
       {:else if (page === RIGHT_PAGE)}
-        <button class="btn" aria-label="Next" on:click|preventDefault ="{() => handleClick($current_page + 1)}">
+        <button class="bg-secondary m-0.5 text-textLight w-24 border-border  no-underline rounded-full border-2" aria-label="Next" on:click|preventDefault ="{() => handleClick($current_page + 1)}">
           <i class="fa fa-angle-right"></i>
         </button>
       {:else}
-        <button class="btn { $current_page === page ? 'active' : ''}" on:click|preventDefault ="{() => handleClick(page) }">
+        <button class="bg-secondary m-0.5 text-textLight w-24 border-border  no-underline rounded-full border-2 { $current_page === page ? 'active' : ''}" on:click|preventDefault ="{() => handleClick(page) }">
           { page }
         </button>
       {/if}
     {/each}
+  </div>
  
 </section>
  {/if}
