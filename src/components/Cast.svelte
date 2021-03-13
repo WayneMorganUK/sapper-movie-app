@@ -15,24 +15,24 @@
 </script>
 
 {#if persons.length}
-  <div class='max-w-7xl mx-auto xl:mt-5 xl:mb-10 bg-secondary xl:pl-5 pt-1 xl:rounded-2xl'>
+  <section id='people' class='max-w-7xl mx-auto xl:mt-5 xl:mb-10 bg-secondary xl:pl-5 pt-1 xl:rounded-2xl'>
     <h2 class='flex xl:inline-block justify-center xl:justify-start xl:my-5 text-2xl font-bold'>Top Billed Cast</h2>
     <div class='flex flex-wrap sm:flex-nowrap sm:overflow-y-hidden relative'>
       {#each persons as person}
         <div class='w-28 flex-shrink-0 mb-2 rounded relative bg-primary m-0.5 sm:mr-3 hover:bg-selected'>
-          <a class='no-underline' href={`person/${person.id}`} key={person.id}>
+          <a href={`person/${person.id}`} key={person.id}>
             {#if person.profile_path}
-              <img class='w-28 h-44 rounded-t' src={ IMAGE_API + person.profile_path } alt='profile' />
+              <img class='w-28 h-42 rounded-t' src={ IMAGE_API + person.profile_path } alt='profile' />
               {:else}
-              <i class="w-28 h-44 rounded-2xl relative top-10 left-5 icon fa fa-user-o fa-5x"></i>
+              <i class="w-28 h-42 rounded-2xl relative top-10 left-5 icon fa fa-user-o fa-5x"></i>
               {/if}
-            <h4 class='text-center flex justify-center items-center text-yellow-700 font-semibold'>{person.character}</h4>
-            <h4 class='text-center flex justify-center items-center text-textLight'>{person.name}</h4>
+            <h6 class='text-center flex justify-center items-center text-yellow-700 font-semibold line-clamp-2'>{person.character}</h6>
+            <h6 class='text-center flex justify-center items-center text-textLight line-clamp-2'>{person.name}</h6>
           </a>
         </div>
       {/each}
     </div>
-  </div>
+  </section>
 {/if}
 
 <style>

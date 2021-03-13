@@ -1,7 +1,10 @@
+
+
 <script>
 	import MovieList from './MovieList.svelte'
 	import Pagination from './Pagination.svelte'
-	import MorePages from './MorePages.svelte'
+	// import MorePages from './MorePages.svelte'
+	import InfiniteScroll from '../components/InfiniteScroll.svelte'
 	import Genres from  './Genres.svelte'
 	import { onMount } from 'svelte'
 	import { current_page } from './store.js'
@@ -29,9 +32,15 @@
 		movies = [...movies,...res_results ]
 		
  }
+ function loadMorePages () {
+	 $current_page ++
+	 moreMovies(api_url + $current_page)
+ }
+
 </script>
 
 <Genres />
+
 {#if total_pages&&$current_page}
 	<Pagination
 		{total_pages}
@@ -39,16 +48,21 @@
 	</Pagination>
 {/if}
 
-<MovieList {movies}/>
+<section id='main' class='h-full'>
+	<MovieList {movies}/>
+	{#if $current_page < total_pages}
+		<InfiniteScroll 	
+			on:loadMore={() => loadMorePages()} />
+	{/if}
+</section>
 
-{#if (total_pages-$current_page)}
+
+
+
+
+<!-- {#if (total_pages-$current_page)}
 	<MorePages 
     {total_pages}
     on:change="{(ev) => moreMovies(api_url + ev.detail)}">
 	</MorePages>
-{/if}
-
-
-<style>
-
-</style>
+{/if} -->

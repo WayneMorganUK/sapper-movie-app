@@ -39,7 +39,8 @@
 
 <main class='overflow-y-hidden'>
 	<Header />
-
-	<slot></slot>
+	<section class= 'max-w-7xl mx-auto' >
+		<slot></slot>
+	</section>
 </main>
 

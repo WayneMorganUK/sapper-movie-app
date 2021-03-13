@@ -32,16 +32,16 @@
 
 </script>
 
-<div class='container'>
-		<div class='box'>
-			<div class='percent'>
-				<canvas bind:this={canvas} width="100" height="100"></canvas>
-				<div class='number'>
-					<h2>{progress_percent}<span>%</span></h2>
-				</div>
+<section id='progress' class='container'>
+	<div class='box'>
+		<div class='percent'>
+			<canvas bind:this={canvas} width="100" height="100"></canvas>
+			<div class='number'>
+				<h2>{progress_percent}<span>%</span></h2>
 			</div>
 		</div>
-	</div>	
+	</div>
+</section>
 
 <style>
 	* {

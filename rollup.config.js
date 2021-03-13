@@ -80,7 +80,7 @@ export default {
 		preserveEntrySignatures: false,
 		onwarn,
 	},
-
+	
 	server: {
 		input: config.server.input(),
 		output: config.server.output(),

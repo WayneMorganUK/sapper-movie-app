@@ -1,17 +1,18 @@
 const plugin = require('tailwindcss/plugin')
 module.exports = {
+  future: {},
   purge: {
-    enabled: !process.env.ROLLUP_WATCH,
-    content: ['./public/index.html', './src/**/*.svelte'],
-    options: {
-      defaultExtractor: content => [
-        ...(content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []),
-        ...(content.match(/(?<=class:)[^=>\/\s]*/g) || []),
-      ],
-    },
+    mode: 'all',
+    content: ['./src/**/*.svelte', './src/**/*.html'],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
+    maxWidth: {
+      '95/100': '95vw'
+    },
+    maxHeight: {
+      '95/100': '95vh'
+    },
     extend: {
       fontFamily: {
         body: ['Source Sans Pro']
@@ -26,12 +27,15 @@ module.exports = {
         'selected':     "var(--selected)"
       },
       spacing: {
-        '90':  '22.5rem',
+        '42': '10.5rem',
+        '66': '16.5rem',
+        '90': '22.5rem',
         '100': '25rem',
         '104': '26rem',
         '108': '27rem',
         '112': '28rem',
-        '120': '30rem'
+        '120': '30rem',
+        '16/9': '56.25%'
       },
       scale: {
         '60': '0.6',
@@ -39,7 +43,8 @@ module.exports = {
       },
       gridTemplateRows: {
       'auto': 'repeat(auto-fill, minmax(0,auto))',
-    }
+      },
+
     },
   },
   variants: {

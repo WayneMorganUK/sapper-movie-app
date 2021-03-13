@@ -1,11 +1,8 @@
 <script>
-  
   import ProgressBar from '../components/ProgressBar.svelte'
   import Spinner from '../components/Spinner.svelte'
   import Modal from "../components/Modal.svelte"
-  import Persons from '../components/Persons.svelte'
-  import Genres from './Genres.svelte'
-  
+  import Cast from './Cast.svelte'
 
   export let movie_details
   export let trailer_id
@@ -25,29 +22,29 @@
 </script>
 
 {#if movie_details.id && trailer_id}
-  <div class='mt-5 bg-right-top bg-cover' style='background-image: url({IMAGE_API}original/{movie_details.backdrop_path})'>
-    <div class='overlay'>
+  <section id='media' class='mt-5 bg-right-top bg-cover rounded-2xl' style='background-image: url({IMAGE_API}original/{movie_details.backdrop_path})'>
+    <div class='overlay rounded-2xl'>
       <div class='grid max-w-7xl xl:grid-cols-4 px-10 py-8 mx-auto rounded-2xl'>
         <div class='col-start-1 col-end-2 '><img class='h-120 w-90 overflow-hidden rounded-2xl mx-auto' 
           src={movie_details.poster_path ? IMAGE_API + 'w500' +  movie_details.poster_path : 'default.jpg'} alt='movie poster'>
         </div>
         <div class='xl:col-start-2 xl:col-end-5 flex flex-wrap content-start xl:pl-10'>
           <div class='mt-6 xl:mt-0 w-full mb-6 flex flex-wrap'>
-            <h2 class='text-4xl font-semibold w-full'>{movie_details.name? movie_details.name: movie_details.title}
+            <h1 class='w-full'>{movie_details.name? movie_details.name: movie_details.title}
               <span class="text-gray-300">
                 {movie_details.first_air_date ? (movie_details.first_air_date.substring(0,4)) : 
                 movie_details.release_date? (movie_details.release_date.substring(0,4)) : ''}
               </span>
-            </h2>
+            </h1>
             <div class='xl:flex'>
               <div class='pl-0'>
                 {movie_details.first_air_date ? movie_details.first_air_date: 
                   movie_details.release_date? movie_details.release_date :'No Date Available'}
                   <span class='hidden xl:px-2 xl:inline'>&#x2022;</span>
               </div>
-              <div class=' no-underline'>
+              <div>
                 {#each movie_details.genres as genre, i}
-                  <a class='no-underline' href=#/genre/{genre.id} key={genre.id}>{genre.name}</a>
+                  <a class='hover:text-textDark' href=#/genre/{genre.id} key={genre.id}>{genre.name}</a>
                   {#if (i!==movie_details.genres.length-1)}<span class='mr-2'>,</span>{/if}
                 {/each}
               </div>
@@ -63,7 +60,7 @@
               </div>
             {/if}
             {#if trailer_id !== '999'}
-            <div class='transform -translate-x-10 flex no-underline pl-5 cursor-pointer hover:opacity-80' on:click={() => modal.show()}>
+            <div class='transform -translate-x-10 flex pl-5 cursor-pointer hover:opacity-80' on:click={() => modal.show()}>
               <i class="flex items-center fa fa-play fa-2x" aria-hidden="true"></i>
               <p class='flex justify-center ml-4 text-2xl items-center' >Play Trailer</p>
             </div>
@@ -75,21 +72,21 @@
           </div>
           <div class='w-full'>
             <div class='text-lg italic opacity-70'>{movie_details.tagline}</div>
-            <p class='my-2 w-full text-xl font-semibold'>Overview</p>
+            <h4 class='my-2 w-full font-semibold'>Overview</h4>
             <div class='overview-details'>{movie_details.overview}</div>
           </div>
         </div>
       </div>
       <!-- </div> -->
     </div>
-  </div>
-
-  <div>
-    <Persons movie_id = {movie_id} />
-  </div>
+  </section>
+  
+  <Cast {movie_id} />
+  
   {#if trailer_id !== '999'}
     <Modal bind:this={modal} {trailer_id}></Modal>
   {/if}
+  
 {:else}
   <Spinner />
 {/if}

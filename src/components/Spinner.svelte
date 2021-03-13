@@ -1,45 +1,22 @@
-<div class='spinner'>
-  <div class="balls">
-    <div />
-    <div />
-    <div />
+<section id='spinner' class='flex absolute items-center h-24 w-36 top-1/2 -translate-y-1/2 -translate-x-1/2 '>
+  <div class="inline-flex flex-nowrap flex-row items-center justify-between mx-auto w-12">
+    <div class='w-3 h-3 rounded-full bg-primary -translate-y-full'/>
+    <div class='w-3 h-3 rounded-full bg-primary -translate-y-full'/>
+    <div class='w-3 h-3 rounded-full bg-primary -translate-y-full'/>
   </div>
-</div>
+</section>
 
 <style>
-  .spinner {
-    display: flex;
-    position: absolute;
-    align-content: center;
-    height: 100px;
-    width: 150px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .balls {
-    display: inline-flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-    width: 50px;
-  }
 
-  .balls div {
-    width: 0.8em;
-    height: 0.8em;
-    border-radius: 50%;
-    background-color: var(--primary-colour);
-    transform: translateY(-100%);
+div {
     animation: wave 0.8s ease-in-out alternate infinite;
   }
 
-  .balls div:nth-of-type(1) {
+div:nth-of-type(1) {
     animation-delay: -0.4s;
   }
 
-  .balls div:nth-of-type(2) {
+div:nth-of-type(2) {
     animation-delay: -0.2s;
   }
 

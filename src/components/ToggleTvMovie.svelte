@@ -20,7 +20,7 @@
 
 </script>
 
-<div class="flex justify-right items-center w-20 md:w-28 h-7 text-textLight border-2 border-border rounded-full">
+<section id=tv-movie-toggle class="flex justify-right items-center w-20 md:w-28 h-7 text-textLight border-2 border-border rounded-full">
   <div class="relative">
       <button
         class:active={$media_type==='movie'}
@@ -39,7 +39,7 @@
           <i class="fa fa-television" aria-hidden="true"></i>
       </button>
   </div>
-</div>
+</section>
 
 <style>
   /* .selector {

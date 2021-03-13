@@ -11,86 +11,22 @@
 </script>
 
 {#if shown}
-  <div class="modal-wrapper">
-    <div class="modal">
-      
-        <div class = 'header'>
-          <!-- <div class='title'>Trailer</div> -->
-          
-          </div>
-         
-        <div class= 'ytplayer'>
-          <iframe class='trailer'  title='preview'
+  <section id='trailer' class="top-0 left-0 bottom-0 right-0 bg-gray-800 bg-opacity-60 fixed z-50">
+        <div class="absolute top-0 left-0 w-full h-full">
+          <iframe 
+            class='absolute top-0 left-0 w-full h-full'
+            title='Trailer'
             src="https://www.youtube.com/embed/{trailer_id}?rel=0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             controls='true'
             allowfullscreen >
             <track default kind="captions" />
-        </iframe>
+          </iframe>
         </div>
-    </div><div class="close" on:click={() => hide()}><i class="fa fa-window-close" aria-hidden="true"></i></div>   
-  </div>
+
+    <div class="close absolute top-1 left-1 text-red-900 text-4xl xl:text-5xl hover:font-bold" 
+      on:click={() => hide()}>
+      <i class="fa fa-window-close" aria-hidden="true"></i>
+    </div>
+  </section>
 {/if}
-
-<style>
-
-  .ytplayer {
-    position: relative;
-    padding-bottom: 56.25%;
-  }
-  .trailer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .modal-wrapper {
-    background-color: rgba(0, 0, 0, 0.76);
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-  }
-
-  .modal {
-    background-color: var(--background-colour);
-    margin: 0 auto;
-    overflow: hidden;
-    padding-bottom: 56.25%;
-    position: relative;
-    height: 80vh;
-    width: 80vw;
-    padding-top: 2px;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  .header {
-    display: inline-flex;
-    justify-content: space-between;
-  }
-  .close {
-    cursor: pointer;
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    color: red;
-    font-size: 3rem;
-  }
-  .close:hover {
-    font-weight: bold;
-  }
-  @media only screen and (max-width: 640px) {
-    /* .ytplayer {
-      height: 100vh;
-      width: 100vw;
-    } */
-    .close {
-      font-size: 1rem;
-    }
-
-  }
-
-</style>

@@ -1,8 +1,6 @@
 <script>
   export let total_pages
-  import { current_page } from './store.js'
-  import { fade } from 'svelte/transition'
-  
+  import { current_page } from './store.js'  
 
   import { createEventDispatcher } from 'svelte';
   const dispatch = createEventDispatcher();
@@ -59,29 +57,30 @@
   }
   
   $: fetchPageNumbers($current_page)
-
+  
+   
 </script>
-<section class= 'max-w-7xl mx-auto' >
-  <div class='bg-primary flex flex-nowrap my-1 p-1 justify-between h-8 text-xs xl:rounded-full' >
 {#if (total_pages > 1) }
+<section id='pagination' class='wide p-1 justify-between' >
+  
     {#each pages as page}
       {#if (page === LEFT_PAGE)}
-        <button class="bg-secondary text-textLight w-24 border-border  no-underline rounded-full border-2" aria-label="Previous" on:click|preventDefault ="{() => handleClick($current_page -1)}">
+        <button class="btn" aria-label="Previous" on:click|preventDefault ="{() => handleClick($current_page -1)}">
           <i class="fa fa-angle-left"></i>
         </button>
       {:else if (page === RIGHT_PAGE)}
-        <button class="bg-secondary text-textLight w-24 border-border  no-underline rounded-full border-2" aria-label="Next" on:click|preventDefault ="{() => handleClick($current_page + 1)}">
+        <button class="btn" aria-label="Next" on:click|preventDefault ="{() => handleClick($current_page + 1)}">
           <i class="fa fa-angle-right"></i>
         </button>
       {:else}
-        <button class="bg-secondary text-textLight w-24 border-border  no-underline rounded-full border-2 { $current_page === page ? 'active' : ''}" on:click|preventDefault ="{() => handleClick(page) }">
+        <button class="btn { $current_page === page ? 'active' : ''}" on:click|preventDefault ="{() => handleClick(page) }">
           { page }
         </button>
       {/if}
     {/each}
-  
-{/if}</div>
+ 
 </section>
+ {/if}
 
 <style>
   i {
