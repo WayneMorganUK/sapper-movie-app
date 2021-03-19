@@ -1,6 +1,6 @@
 <script>
-  import { onMount, tick } from 'svelte'
-  import { media_type, ApiKey} from './store'
+  import { onMount } from 'svelte'
+  import { ApiKey} from './store'
   let films=[]
   let tv = []
   export let personId
@@ -28,10 +28,10 @@
 {#if movies}
   <section id='known-for' class='grid mx-auto'>
     {#if films}
-      <h3 class='my-5 pl-3.5 xl:pl-0'>Movies</h3>
-      <div class='flex flex-wrap sm:flex-nowrap sm:overflow-y-hidden relative'>
+      <h3 class='flex xl:inline-block justify-center xl:justify-start xl:my-5 text-2xl font-bold'>Movies</h3>
+      <div class='flex flex-wrap justify-center sm:justify-start sm:flex-nowrap sm:overflow-y-hidden relative'>
         {#each films as movie}
-        <div class='w-28 h-56 flex-shrink-0 rounded mb-2 relative bg-secondary m-0.5 sm:mr-3 hover:bg-selected'>
+          <div class='w-28 h-56 flex-shrink-0 rounded mb-2 relative bg-secondary m-0.5 sm:mr-3 hover:bg-selected'>
             <a class='rounded w-28' href={`movie/${movie.id}`}>
               <img class='object-cover w-28 h-44 rounded-t' src={movie.poster_path ? IMAGE_API + movie.poster_path : DEFAULT_IMG } alt={movie.title} />
               <div class="w-28 h-12 p-0.5">
@@ -43,11 +43,11 @@
       </div>
     {/if}
     {#if tv}
-      <h2 class='my-5 text-2xl font-bold pl-3.5 xl:pl-0'>TV</h2>
-      <div class='flex flex-wrap sm:flex-nowrap sm:overflow-y-hidden relative'>
+      <h3 class='flex xl:inline-block justify-center xl:justify-start xl:my-5 text-2xl font-bold'>TV</h3>
+      <div class='flex flex-wrap justify-center sm:justify-start sm:flex-nowrap sm:overflow-y-hidden relative'>
         {#each tv as show}
-          <div class='w-28 flex-shrink-0 mb-2 rounded relative bg-secondary m-0.5 sm:mr-3 hover:bg-selected'>
-            <a class='rounded' href={`tv/${show.id}`}>
+          <div class='w-28 h-56 flex-shrink-0 rounded mb-2 relative bg-secondary m-0.5 sm:mr-3 hover:bg-selected'>
+            <a class='rounded w-28' href={`tv/${show.id}`}>
               <img class='object-cover w-28 h-44 rounded-t'src={show.poster_path ? IMAGE_API + show.poster_path : DEFAULT_IMG } alt={show.name} />
               <div class="w-28 h-12 p-0.5">
                 <h4 class='text-sm text-center flex justify-center items-center text-textLight line-clamp-2'>{ show.name }</h4>

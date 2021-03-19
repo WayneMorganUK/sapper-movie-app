@@ -17,10 +17,6 @@
     .then(x => x.json())
 	})
 
-  function toggleTrailer() {
-      active = !active
-  }
-
 </script>
 
 {#if person.id}

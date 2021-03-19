@@ -20,6 +20,7 @@
 
 	async function getMovies (API) {
 		const res = await fetch(API)
+		
 		const res_json = await res.json()
 		movies = await res_json.results
 		total_pages = res_json.total_pages

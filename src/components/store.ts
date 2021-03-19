@@ -8,4 +8,4 @@ export const genres_list = writable({})
 
 export const selected = writable('')
 
-export const ApiKey = readable(process.env.SAPPER_APP_API_KEY)
+export const ApiKey = readable(process.env.SAPPER_APP_API_KEY, () => {})

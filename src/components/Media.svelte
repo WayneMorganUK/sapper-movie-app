@@ -13,29 +13,24 @@
   let modal;
   window.scrollTo({top: -1000, behavior: 'smooth'})
 
-  let active=false
-
-  function toggleTrailer() {
-      active = !active
-  }
-
 </script>
 
 {#if movie_details.id && trailer_id}
-  <section id='media' class='mt-5 bg-right-top bg-cover rounded-2xl' style='background-image: url({IMAGE_API}original/{movie_details.backdrop_path})'>
-    <div class='overlay rounded-2xl'>
-      <div class='grid max-w-7xl xl:grid-cols-4 px-10 py-8 mx-auto rounded-2xl'>
-        <div class='col-start-1 col-end-2 '><img class='h-120 w-90 overflow-hidden rounded-2xl mx-auto' 
+  <section id='media' class='xl:mt-5 bg-right-top bg-contain xl:bg-cover xl:rounded-2xl' style='background-image: url({IMAGE_API}original/{movie_details.backdrop_path})'>
+    <div class='overlay xl:rounded-2xl'>  
+      <div class='grid max-w-7xl xl:grid-cols-4 px-10 py-8 mx-auto xl:rounded-2xl'>
+        <div class='col-start-1 col-end-2 '>
+          <img class='h-96 w-64 xl:h-120 xl:w-80 overflow-hidden rounded-2xl mx-auto' 
           src={movie_details.poster_path ? IMAGE_API + 'w500' +  movie_details.poster_path : 'default.jpg'} alt='movie poster'>
         </div>
         <div class='xl:col-start-2 xl:col-end-5 flex flex-wrap content-start xl:pl-10'>
           <div class='mt-6 xl:mt-0 w-full mb-6 flex flex-wrap'>
-            <h1 class='w-full'>{movie_details.name? movie_details.name: movie_details.title}
-              <span class="text-gray-300">
+            <h3 class='w-full xl:text-4xl'>{movie_details.name? movie_details.name: movie_details.title}
+              <span class="xl:text-4xl text-gray-300">
                 {movie_details.first_air_date ? (movie_details.first_air_date.substring(0,4)) : 
                 movie_details.release_date? (movie_details.release_date.substring(0,4)) : ''}
               </span>
-            </h1>
+            </h3>
             <div class='xl:flex'>
               <div class='pl-0'>
                 {movie_details.first_air_date ? movie_details.first_air_date: 
@@ -45,7 +40,7 @@
               <div>
                 {#each movie_details.genres as genre, i}
                   <a class='hover:text-textDark' href=#/genre/{genre.id} key={genre.id}>{genre.name}</a>
-                  {#if (i!==movie_details.genres.length-1)}<span class='mr-2'>,</span>{/if}
+                  {#if (i!==movie_details.genres.length-1)}<span class='mr-2'>, </span>{/if}
                 {/each}
               </div>
               {#if movie_details.runtime}

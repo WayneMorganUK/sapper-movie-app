@@ -1,9 +1,11 @@
-<section id='spinner' class='flex absolute items-center h-24 w-36 top-1/2 -translate-y-1/2 -translate-x-1/2 '>
-  <div class="inline-flex flex-nowrap flex-row items-center justify-between mx-auto w-12">
-    <div class='w-3 h-3 rounded-full bg-primary -translate-y-full'/>
-    <div class='w-3 h-3 rounded-full bg-primary -translate-y-full'/>
-    <div class='w-3 h-3 rounded-full bg-primary -translate-y-full'/>
-  </div>
+<section id='spinner' class='w-full h-full m-auto'>
+  <section class='flex absolute items-center h-8 top-1/2 left-1/2 transform -translate-x-1/2 '>
+    <div class="inline-flex flex-nowrap flex-row items-center justify-between mx-auto w-12">
+      <div class='w-3 h-3 rounded-full bg-primary -translate-x-1/2 -translate-y-full'/>
+      <div class='w-3 h-3 rounded-full bg-primary  -translate-x-1/2 -translate-y-full'/>
+      <div class='w-3 h-3 rounded-full bg-primary -translate-x-1/2 -translate-y-full'/>
+    </div>
+  </section>
 </section>
 
 <style>

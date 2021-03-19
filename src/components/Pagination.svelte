@@ -11,9 +11,9 @@
   const totalNumbers = 9
   const totalBlocks = 11
 
-  function rangex(size, startAt = 0) {
-    return [...Array(size).keys()].map(i => i + startAt);
-  }
+  // function rangex(size, startAt = 0) {
+  //   return [...Array(size).keys()].map(i => i + startAt);
+  // }
 
   function range(from, to) {
     let i = from;
@@ -61,7 +61,7 @@
    
 </script>
 {#if (total_pages > 1) }
-<section id='pagination' class='max-w-7xl mx-auto p-0.5 justify-between' >
+<section id='pagination' class='max-w-7xl mx-auto xl:py-0.5 justify-between' >
   <div class='bg-primary flex flex-nowrap justify-between p-0.5 h-8 text-xs xl:rounded-full' >
   
     {#each pages as page}

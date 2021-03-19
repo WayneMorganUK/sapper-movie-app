@@ -3,7 +3,7 @@
 
 </script>
 
-	<section id='genres' class='max-w-7xl mx-auto p-0.5'>
+	<section id='genres' class='max-w-7xl mx-auto xl:py-0.5'>
 		<div class='bg-primary flex overflow-y-hidden h-8 max-w-7xl mx-auto p-0.5 text-xs items-center xl:rounded-full'>
 			{#each $genres_list[$media_type] as genre}
 				<a 

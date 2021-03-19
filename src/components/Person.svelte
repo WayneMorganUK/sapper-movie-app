@@ -6,14 +6,15 @@
 
 <section id='person' class='mx-auto max-w-7xl xl:pb-20 xl:mt-5'>
   <div class='bg-primary xl:bg-bgcolour grid xl:grid-cols-5 xl:grid-rows-auto xl:auto-rows-fr' > 
-    <div class='xl:col-start-1 xl:col-end-2 xl:row-start-1 xl:row-end-3 '>
-      <h3 class='mx-auto xl:hidden'>{person.name}</h3>
+    <div class='w-full xl:col-start-1 xl:col-end-2 xl:row-start-1 xl:row-end-3 mx-auto'>
+      
       {#if person.profile_path}
-        <img class='w-64 rounded-2xl mx-auto' src={ IMAGE_API + person.profile_path } alt='profile'>
+        <img class='mt-4 xl:pt-0 w-64 h-96 rounded-2xl mx-auto' src={ IMAGE_API + person.profile_path } alt='profile'>
       {:else}
-        <i class="icon w-64 fa fa-user-o fa-5x"></i>
+      <img class='mt-4 xl:pt-0 flex justify-end w-64 h-96 rounded-2xl mx-auto' src='person.svg' alt='profile'>
       {/if}
-      <div class='p-3'>
+      <h2 class='mt-2 w-full text-center mx-auto xl:hidden'>{person.name}</h2>
+      <div class='pl-8 w-full xl:p-3'>
         <h2 class='text-2xl mt-2'>Personal Info</h2>
         <h3 class='text-lg font-bold mt-4 mb-1'>Known For</h3>
         <p>{person.known_for_department}</p>
