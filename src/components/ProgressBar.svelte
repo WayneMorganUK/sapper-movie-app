@@ -1,13 +1,19 @@
-<script>
+<script lang='ts'>
 	import { afterUpdate } from 'svelte'
-	export let progress
-	$: progress_percent = progress * 10
-	let canvas
+	export let progress:number
+	let progress_percent:number
+	let canvas:HTMLCanvasElement
+	let pathcolour: string
+	let blue:number
+	let red:number
+	let green:number
+	let rgbcolour:string
 
+  $: progress_percent = progress * 10
 	$: pathcolour = '#2c2c2c';
 	$: blue = 0;
-	$: red = ( progress_percent<50 )? 255 : 255 -parseInt(((progress_percent - 50)* 2.55 *2))
-	$: green = ( progress_percent > 50 )? 255 : parseInt(((progress_percent )* 2.55 * 2))
+	$: red = ( progress_percent<50 )? 255 : 255 -Math.floor((progress_percent - 50)* 2.55 *2)
+	$: green = ( progress_percent > 50 )? 255 : Math.floor((progress_percent )* 2.55 * 2)
 	$: rgbcolour ="rgb("+red+","+green+","+blue+")"
 	
 	afterUpdate(async () => {
@@ -15,8 +21,8 @@
 	})
 
 
-	function setCanvas(x) {
-	  var context = canvas.getContext('2d');
+	function setCanvas(x:number) {
+	  var context:CanvasRenderingContext2D = canvas.getContext('2d');
 		var x=context.canvas.width/2;
 		var y=context.canvas.height/2;
 	  context.lineWidth=5;
@@ -32,60 +38,13 @@
 
 </script>
 
-<section id='progress' class='container'>
+<section id='progress' class='bg-gray-900 block rounded-full align-center relative w-24 h-24'>
 	<div class='box'>
 		<div class='percent'>
-			<canvas bind:this={canvas} width="100" height="100"></canvas>
-			<div class='number'>
-				<h2>{progress_percent}<span>%</span></h2>
+			<canvas class='w-24 h-24' bind:this={canvas} width="98" height="98"></canvas>
+			<div class='absolute top-0 left-0 w-full h-full flex justify-center items-center'>
+				<h2 class='text-textLight font-semibold text-3xl'>{progress_percent}<span class='text-xl align-top'>%</span></h2>
 			</div>
 		</div>
 	</div>
 </section>
-
-<style>
-	* {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-		border: 0;
-	}
-	canvas {
-		width: 100px;
-		height: 100px;
-	}	
-	.container {
-		background-color: #081c22;;
-		position: relative;
-		display: block;
-		align-items: center;
-		border-radius: 50%;
-		text-align:center;
-		position:relative;
-		width: 100px;
-		height: 100px;
-		padding: 0px;
-
-	}
-	.percent .number {
-		position:absolute;
-		top: 0;
-		left: 0;
-		width:100%;
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;		
-	}
-	.percent .number h2 {
-		color: var(--light-text);
-		font-weight: 700;
-		font-size: 38px;
-	}
-	
-	.percent .number h2 span{
-		font-size: 20px;
-		vertical-align: top;
-	}
-
-</style>

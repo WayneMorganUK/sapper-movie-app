@@ -1,5 +1,3 @@
-
-
 <script>
 	import MovieList from './MovieList.svelte'
 	import Pagination from './Pagination.svelte'

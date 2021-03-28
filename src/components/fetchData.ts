@@ -1,5 +1,5 @@
-export async function getMovieDetails(x) {
-  const res = await fetch(x)
+export async function getMovieDetails(url) {
+  const res = await fetch(url)
   if(res.status === 200 ){
     const movieResult = await res.json()
     return movieResult

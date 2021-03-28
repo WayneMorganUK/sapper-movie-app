@@ -9,7 +9,7 @@
     <div class='w-full xl:col-start-1 xl:col-end-2 xl:row-start-1 xl:row-end-3 mx-auto'>
       
       {#if person.profile_path}
-        <img class='mt-4 xl:pt-0 w-64 h-96 rounded-2xl mx-auto' src={ IMAGE_API + person.profile_path } alt='profile'>
+        <img class='mt-4 xl:mt-0 xl:pt-0 w-64 h-96 rounded-2xl mx-auto' src={ IMAGE_API + person.profile_path } alt='profile'>
       {:else}
       <img class='mt-4 xl:pt-0 flex justify-end w-64 h-96 rounded-2xl mx-auto' src='person.svg' alt='profile'>
       {/if}
@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="xl:col-start-2 xl:col-end-6 xl:row-start-1 xl:row-end-2">
-      <div class='mb-2 relative bg-primary xl:ml-5 p-3.5 rounded-2xl'>
+      <div class='mb-2 xl:mb-4 relative bg-primary xl:ml-5 p-3.5 rounded-2xl'>
         <h2 class='text-2xl hidden xl:inline-block'>{person.name}</h2>
         <h3 class='text-lg font-bold mt-4 mb-1'>Biography</h3>
         <p>{person.biography}</p>

@@ -1,41 +1,52 @@
 <script context="module" lang="ts">
   const ApiKey: string = process.env.SAPPER_APP_API_KEY
-	const GENRES_MOVIE_API = `https://api.themoviedb.org/3/genre/movie/list?api_key=${ApiKey}&language-en-GB`
-	const GENRES_TV_API = `https://api.themoviedb.org/3/genre/tv/list?api_key=${ApiKey}&language-en-GB`
+	const GENRES_MOVIE_API = new URL (`https://api.themoviedb.org/3/genre/movie/list?api_key=${ApiKey}&language-en-GB`)
+	const GENRES_TV_API = new URL (`https://api.themoviedb.org/3/genre/tv/list?api_key=${ApiKey}&language-en-GB`)
+
+	type Media = {
+		genres:[Genre]
+	}
+
+	type MediaPlatform = "movie" | "tv";
+
+	type Genre = {
+		id: number;
+		name: string;
+	}
+
+	type Genres = {
+		[Key in MediaPlatform]: Genre[];
+	}
+	const genre:Genres = {
+  	movie: [],
+  	tv: []
+	}
 
   export async function preload() {
-		const genres:any ={}
+    const res_mov:Response = await this.fetch(GENRES_MOVIE_API)
+	  const res_mov_json:Media = await res_mov.json()
+		genre.movie = res_mov_json.genres
 
-    const res_mov = await this.fetch(GENRES_MOVIE_API)  //.catch(handleError)
-		const res_mov_json = await res_mov.json()
-		genres.movie  = await res_mov_json.genres
-
-		const res_tv = await this.fetch(GENRES_TV_API)
-		const res_tv_json = await res_tv.json()
-		genres.tv = await res_tv_json.genres
+		const res_tv:Response = await this.fetch(GENRES_TV_API)
+		const res_tv_json:Media = await res_tv.json()
+		genre.tv = res_tv_json.genres
 		
-		return { genres }
+		return { genre }
 
-		//function handleError(err){
-		// 	console.warn(err)
-		// 	let resp = new Response(
-		// 		JSON.stringify({
-		// 			code:400,
-		// 			message:'networ error'
-		// 		})
-		// 	)
-		// 	return resp
-		// }
 	}
 	
 </script>
 
 <script lang="ts">
-	export let genres ={}
+	export let genre:Genres = {
+  	movie: [],
+  	tv: []
+	}
 
 	import Header from '../components/Header.svelte'
 	import { genres_list } from '../components/store'
-	$genres_list = genres
+
+	$genres_list= genre
 
 </script>
 
