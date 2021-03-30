@@ -14,6 +14,7 @@
 					{genre.name}
 				</a>
 			{/each}
+		</div>
 	</section>
 
 

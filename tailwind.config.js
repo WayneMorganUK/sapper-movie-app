@@ -7,12 +7,6 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    maxWidth: {
-      '95/100': '95vw'
-    },
-    maxHeight: {
-      '95/100': '95vh'
-    },
     extend: {
       fontFamily: {
         body: ['Source Sans Pro']
