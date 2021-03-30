@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const tailwind = require('tailwindcss');
 const cssnano = require('cssnano');
 const presetEnv = require('postcss-preset-env')({
@@ -7,9 +8,19 @@ const presetEnv = require('postcss-preset-env')({
   },
 });
 
+
 const plugins =
   process.env.NODE_ENV === 'production'
     ? [tailwind, presetEnv, cssnano]
     : [tailwind, presetEnv];
 
 module.exports = { plugins };
+=======
+module.exports = {
+  plugins: [
+    require("postcss-import"),
+    require("postcss-nested"),
+    require("tailwindcss")
+  ],
+}
+>>>>>>> parent of 044e0a0 (updates)
