@@ -19,14 +19,14 @@ npm install sapper-environment --save
 ## update rollup.config.js
 
 ```
-const sapperEnv = require('sapper-environment');
+const sapperEnv = require('sapper-environment'); //----add this ------//
 
 client: {
     input: config.client.input(),
     output: config.client.output(),
     plugins: [
         replace({
-            ...sapperEnv(),
+            ...sapperEnv(), <----add this ------>
             'process.browser': true,
             'process.env.NODE_ENV': JSON.stringify(mode),
         }),

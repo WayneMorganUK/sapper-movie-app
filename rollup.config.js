@@ -9,10 +9,10 @@ import { terser } from 'rollup-plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
-import sapperEnv from 'sapper-environment';
+import sapperEnv from 'sapper-environment'; //added
+
+
 const { preprocess } = require('./svelte.config');
-
-
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
@@ -30,9 +30,12 @@ export default {
 		output: config.client.output(),
 		plugins: [
 			replace({
-				...sapperEnv(),
-				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				preventAssignment: true,
+				values:{
+					...sapperEnv(),
+					'process.browser': true,
+					'process.env.NODE_ENV': JSON.stringify(mode)
+				},
 			}),
 			svelte({
 				preprocess,
@@ -93,7 +96,7 @@ export default {
 					generate: 'ssr',
 					hydratable: true
 				},
-				emitCss: true
+				emitCss: false
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
@@ -107,7 +110,6 @@ export default {
 			typescript({ sourceMap: dev })
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
-
 		preserveEntrySignatures: 'strict',
 		onwarn,
 	},
