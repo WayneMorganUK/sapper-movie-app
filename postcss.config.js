@@ -1,6 +1,6 @@
-<<<<<<< HEAD
 const tailwind = require('tailwindcss');
 const cssnano = require('cssnano');
+const postcssImport = require('postcss-import');
 const presetEnv = require('postcss-preset-env')({
   features: {
     // enable nesting
@@ -8,19 +8,9 @@ const presetEnv = require('postcss-preset-env')({
   },
 });
 
-
 const plugins =
   process.env.NODE_ENV === 'production'
-    ? [tailwind, presetEnv, cssnano]
-    : [tailwind, presetEnv];
+    ? [postcssImport, tailwind, presetEnv, cssnano]
+    : [postcssImport, tailwind, presetEnv];
 
 module.exports = { plugins };
-=======
-module.exports = {
-  plugins: [
-    require("postcss-import"),
-    require("postcss-nested"),
-    require("tailwindcss")
-  ],
-}
->>>>>>> parent of 044e0a0 (updates)

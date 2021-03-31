@@ -62,7 +62,6 @@
 </script>
 
 {#if (total_pages > 1) }
-<<<<<<< HEAD
   <section id='pagination' class='max-w-7xl mx-auto xl:py-0.5 justify-between' >
     <div class='bg-primary flex flex-nowrap justify-around xl:justify-between p-0.5 h-8 text-xs xl:rounded-full' >
       {#each pages as page}
@@ -116,28 +115,6 @@
     </div>
   </section>
 {/if}
-=======
-<section id='pagination' class='wide p-1 justify-between' >
-  
-    {#each pages as page}
-      {#if (page === LEFT_PAGE)}
-        <button class="btn" aria-label="Previous" on:click|preventDefault ="{() => handleClick($current_page -1)}">
-          <i class="fa fa-angle-left"></i>
-        </button>
-      {:else if (page === RIGHT_PAGE)}
-        <button class="btn" aria-label="Next" on:click|preventDefault ="{() => handleClick($current_page + 1)}">
-          <i class="fa fa-angle-right"></i>
-        </button>
-      {:else}
-        <button class="btn { $current_page === page ? 'active' : ''}" on:click|preventDefault ="{() => handleClick(page) }">
-          { page }
-        </button>
-      {/if}
-    {/each}
- 
-</section>
- {/if}
->>>>>>> parent of 7e0b86e (Tailwind updates)
 
 <style>
   i {

@@ -1,4 +1,5 @@
 <script lang='ts'>
+
 	import MainSection from '../components/MainSection.svelte'
 	import { media_type, ApiKey, selected } from '../components/store.js'
 	$selected = ''

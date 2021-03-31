@@ -6,29 +6,17 @@ import url from '@rollup/plugin-url';
 import svelte from 'rollup-plugin-svelte';
 import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
-import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
-<<<<<<< HEAD
-import sapperEnv from 'sapper-environment'; //added
-
-=======
 import sapperEnv from 'sapper-environment';
->>>>>>> parent of 044e0a0 (updates)
-
 const { preprocess } = require('./svelte.config');
+
+
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
-const preprocess = sveltePreprocess({
-  postcss: {
-    plugins: [
-      require('postcss-import')(),
-      require('postcss-nested')()
-    ]
-  }
-});
+
 
 const onwarn = (warning, onwarn) =>
 	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
@@ -43,15 +31,12 @@ export default {
 		plugins: [
 			replace({
 				preventAssignment: true,
-				values:{
-					...sapperEnv(),
-					'process.browser': true,
-					'process.env.NODE_ENV': JSON.stringify(mode)
-				},
+				...sapperEnv(),
+				'process.browser': true,
+				'process.env.NODE_ENV': JSON.stringify(mode)
 			}),
 			svelte({
 				preprocess,
-				preprocess: sveltePreprocess({ sourceMap: dev }),
 				compilerOptions: {
 					dev,
 					hydratable: true
@@ -99,18 +84,18 @@ export default {
 		output: config.server.output(),
 		plugins: [
 			replace({
+				preventAssignment: true,
 				'process.browser': false,
 				'process.env.NODE_ENV': JSON.stringify(mode)
 			}),
 			svelte({
 				preprocess,
-				preprocess: sveltePreprocess({ sourceMap: dev }),
 				compilerOptions: {
 					dev,
 					generate: 'ssr',
 					hydratable: true
 				},
-				emitCss: false
+				emitCss: true
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
@@ -124,6 +109,7 @@ export default {
 			typescript({ sourceMap: dev })
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
+
 		preserveEntrySignatures: 'strict',
 		onwarn,
 	},
@@ -134,6 +120,7 @@ export default {
 		plugins: [
 			resolve(),
 			replace({
+				preventAssignment: true,
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode)
 			}),
